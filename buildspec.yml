@@ -1,0 +1,16 @@
+version: 0.2
+
+phases:
+  build:
+    commands:
+       - python3 -m venv venv
+       - source venv/bin/activate
+       - pip3 install playwright pytest pytest-playwright
+       - playwright install
+       - pytest
+
+reports:
+  test-report:
+    files:
+      - "results.xml"
+    file-format: "JUNITXML" 
