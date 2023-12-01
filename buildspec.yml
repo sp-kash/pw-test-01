@@ -13,6 +13,7 @@ phases:
        - . automated-test-venv/bin/activate
        - pip3 install playwright pytest pytest-playwright
        - playwright install
+       - playwright install-deps
        - pytest --junitxml=reports/results.xml
 
 reports:
