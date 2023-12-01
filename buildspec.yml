@@ -1,16 +1,23 @@
 version: 0.2
 
+env:
+  secrets-manager:
+      creds: "sampler"
+
 phases:
   build:
     commands:
-       - python3 -m venv venv
-       - source venv/bin/activate
+       - sudo apt-get update
+       - sudo apt-get install python3-virtualenv -y
+       - python3 -m venv automated-test-venv
+       - . automated-test-venv/bin/activate
        - pip3 install playwright pytest pytest-playwright
        - playwright install
-       - pytest
+       - pytest --junitxml=reports/results.xml
 
 reports:
-  test-report:
+  pytest-report:
+    base-directory: reports
     files:
       - "results.xml"
     file-format: "JUNITXML" 

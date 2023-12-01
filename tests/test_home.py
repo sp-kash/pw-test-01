@@ -2,7 +2,7 @@ from playwright.sync_api import Page, expect
 import os, json
 
 creds = json.loads(os.environ['creds'])
-pwdata = json.loads(creds['pwdata'])
+pwdata = creds['pwdata']
 homepage = pwdata['homepage']
 user = pwdata['user']
 passwd = pwdata['passwd']
